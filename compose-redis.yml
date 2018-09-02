@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  redis:
+    image: redis:$REDIS_VERSION
+    #volumes:
+    #  - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    #  - ./redis/data:/data
+    ports:
+      - 6379:6379
+    networks:
+      - svcnet

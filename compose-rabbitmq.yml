@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_VERSION}-management
+    #volumes:
+    #  - ./rabbitmq/config/rabbitmq.confog:/etc/rabbitmq/rabbitmq.config:ro
+    #  - ./rabbitmq/data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+    #environment:
+    # RABBITMQ_DEFAULT_USER
+    # RABBITMQ_DEFAULT_PASS
+    # RABBITMQ_DEFAULT_VHOST
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - svcnet

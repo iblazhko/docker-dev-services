@@ -1,0 +1,4 @@
+/build/reports/
+/build/.fake
+/build/fake
+/build/*.fsx.lock
