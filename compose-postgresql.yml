@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+
+  rabbitmq:
+    image: postgres:${POSTGRES_VERSION}
+    #volumes:
+    #  - ./postgresql/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=<strong password goes here>
+    ports:
+      - 5432:5432
+    networks:
+      - svcnet
