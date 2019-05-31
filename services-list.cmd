@@ -13,3 +13,5 @@ REM -f compose-logstash.yml^
 REM -f compose-redis.yml^
 REM -f compose-sqlserver.yml^
 REM -f compose-postgres.yml^
+REM -f compose-vault.yml^
+

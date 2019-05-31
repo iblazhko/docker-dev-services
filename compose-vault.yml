@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  vault:
+    image: registry.hub.docker.com/library/vault:${VAULT_VERSION}
+    #args: ['server', '-dev', '-dev-kv-v1']
+    # environment:
+    #   - name: VAULT_DEV_ROOT_TOKEN_ID
+    #     value: "myroot"
+    #   - name: VAULT_LOCAL_CONFIG
+    #     value: |
+    #         ui = true
+    #         storage "inmem" {}
+    ports:
+      - 8200:8200
+      - 8201:8201
+    networks:
+      - svcnet

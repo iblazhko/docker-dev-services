@@ -5,6 +5,7 @@ DOCKER_DEVSVC_COMPOSE_FILES="\
  -f compose-mongo.yml\
  -f compose-rabbitmq.yml\
  -f compose-eventstore.yml\
+ -f compose-vault.yml\
  -f network.yml\
  "
 
@@ -13,4 +14,5 @@ DOCKER_DEVSVC_COMPOSE_FILES="\
 # -f compose-redis.yml\
 # -f compose-sqlserver.yml\
 # -f compose-postgres.yml\
+# -f compose-vault.yml\
  
