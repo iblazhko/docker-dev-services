@@ -1,4 +1,8 @@
-/build/reports/
-/build/.fake
-/build/fake
-/build/*.fsx.lock
+*.env.local
+/elasticsearch/data
+/eventstore/data
+/mongo/data
+/postgresql/data
+/rabbitmq/data
+/redis/data
+/vault/data
