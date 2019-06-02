@@ -14,7 +14,7 @@ Supported services:
 - EventStore
 - SQL Server
 - PostgreSQL
-- Vaultr
+- Vault
 
 ## Prerequisites
 
