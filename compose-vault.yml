@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  vault:
+    image: vault:${VAULT_VERSION}
+    volumes:
+      - ./vault/config:/vault/config
+      #- ./vault/data:/vault/file
+    entrypoint: vault server -dev -dev-kv-v1 -config=/vault/config/vault.json
+    env_file:
+      - compose-vault.env
+      - compose-vault.env.local
+    cap_add:
+      - IPC_LOCK
+    ports:
+      - 8200:8200
+      - 8201:8201
+    networks:
+      - svcnet

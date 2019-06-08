@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -6,11 +6,11 @@ services:
     image: eventstore/eventstore:release-$EVENTSTORE_VERSION
     #volumes:
     #  - ./eventstore/data:/var/lib/eventstore
+    env_file:
+      - compose-eventstore.env
+      - compose-eventstore.env.local
     ports:
       - 1113:1113
       - 2113:2113
     networks:
       - svcnet
-    environment:
-      - EVENTSTORE_RUN_PROJECTIONS=All
-      - EVENTSTORE_START_STANDARD_PROJECTIONS=true

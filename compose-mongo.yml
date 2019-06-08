@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
 
@@ -7,9 +7,9 @@ services:
     #volumes:
     #  MongoDB uses memory mapped files, this is not compatible with Docker for Windows volumes sharing
     #  - ./mongo/data/db:/data/db
-    #environment:
-    # MONGO_INITDB_ROOT_USERNAME: root
-    # MONGO_INITDB_ROOT_PASSWORD: example
+    env_file:
+      - compose-mongo.env
+      - compose-mongo.env.local
     ports:
       - 27017:27017
     networks:

@@ -11,3 +11,6 @@ max_line_length = 120
 
 [*.{md,markdown}]
 trim_trailing_whitespace = false
+
+[*.cmd]
+end_of_line = crlf

@@ -1,4 +1,2 @@
-/build/reports/
-/build/.fake
-/build/fake
-/build/*.fsx.lock
+*.env.local
+.DS_Store

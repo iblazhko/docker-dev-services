@@ -1,13 +1,14 @@
-version: '2'
+version: '3'
 
 services:
 
-  rabbitmq:
+  postgres:
     image: postgres:${POSTGRES_VERSION}
     #volumes:
     #  - ./postgresql/data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=<strong password goes here>
+    env_file:
+      - compose-postgres.env
+      - compose-postgres.env.local
     ports:
       - 5432:5432
     networks:
