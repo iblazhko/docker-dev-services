@@ -4,9 +4,8 @@ services:
 
   mongo:
     image: mongo:$MONGO_VERSION
-    #volumes:
-    #  MongoDB uses memory mapped files, this is not compatible with Docker for Windows volumes sharing
-    #  - ./mongo/data/db:/data/db
+    volumes:
+      - mongo-data:/data/db
     env_file:
       - compose-mongo.env
       - compose-mongo.env.local
@@ -14,3 +13,8 @@ services:
       - 27017:27017
     networks:
       - svcnet
+
+volumes:
+
+  mongo-data:
+    driver: local

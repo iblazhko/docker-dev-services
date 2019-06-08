@@ -2,10 +2,10 @@ version: '3'
 
 services:
 
-  rabbitmq:
+  sqlserver:
     image: mcr.microsoft.com/mssql/server:${SQLSERVER_VERSION}
-    #volumes:
-    #  - ./mssql/data:/var/opt/mssql
+    volumes:
+      - sqlserver-data:/var/opt/mssql
     env_file:
       - compose-sqlserver.env
       - compose-sqlserver.env.local
@@ -13,3 +13,8 @@ services:
       - 1433:1433
     networks:
       - svcnet
+
+volumes:
+
+  sqlserver-data:
+    driver: local

@@ -6,8 +6,13 @@ services:
     image: redis:$REDIS_VERSION
     volumes:
       - ./redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
-      #- ./redis/data:/data
+      - redis-data:/data
     ports:
       - 6379:6379
     networks:
       - svcnet
+
+volumes:
+
+  redis-data:
+    driver: local

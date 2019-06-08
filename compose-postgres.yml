@@ -4,8 +4,8 @@ services:
 
   postgres:
     image: postgres:${POSTGRES_VERSION}
-    #volumes:
-    #  - ./postgresql/data:/var/lib/postgresql/data
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     env_file:
       - compose-postgres.env
       - compose-postgres.env.local
@@ -13,3 +13,8 @@ services:
       - 5432:5432
     networks:
       - svcnet
+
+volumes:
+
+  postgres-data:
+    driver: local
