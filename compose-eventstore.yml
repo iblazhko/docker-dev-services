@@ -4,8 +4,8 @@ services:
 
   eventstore:
     image: eventstore/eventstore:release-$EVENTSTORE_VERSION
-    #volumes:
-    #  - ./eventstore/data:/var/lib/eventstore
+    volumes:
+      - eventstore-data:/var/lib/eventstore
     env_file:
       - compose-eventstore.env
       - compose-eventstore.env.local
@@ -14,3 +14,8 @@ services:
       - 2113:2113
     networks:
       - svcnet
+
+volumes:
+
+  eventstore-data:
+    driver: local

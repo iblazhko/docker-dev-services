@@ -6,7 +6,7 @@ services:
     image: vault:${VAULT_VERSION}
     volumes:
       - ./vault/config:/vault/config
-      #- ./vault/data:/vault/file
+      - vault-data:/vault/file
     entrypoint: vault server -dev -dev-kv-v1 -config=/vault/config/vault.json
     env_file:
       - compose-vault.env
@@ -18,3 +18,8 @@ services:
       - 8201:8201
     networks:
       - svcnet
+
+volumes:
+
+  vault-data:
+    driver: local

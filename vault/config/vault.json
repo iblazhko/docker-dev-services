@@ -1,8 +1,6 @@
 {
     "backend": {
-        "file": {
-            "path": "/vault/file"
-        }
+        "inmem": {}
     },
     "ui": true
 }
