@@ -1,0 +1,8 @@
+{
+    "backend": {
+        "file": {
+            "path": "/vault/file"
+        }
+    },
+    "ui": true
+}

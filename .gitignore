@@ -1,8 +1,2 @@
 *.env.local
-/elasticsearch/data
-/eventstore/data
-/mongo/data
-/postgresql/data
-/rabbitmq/data
-/redis/data
-/vault/data
+.DS_Store

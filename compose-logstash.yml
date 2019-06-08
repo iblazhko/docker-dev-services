@@ -3,15 +3,15 @@ version: '3'
 services:
 
   logstash:
+    depends_on:
+      - elasticsearch
     image: docker.elastic.co/logstash/logstash:$ELK_VERSION
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
-    ports:
-      - 5000:5000
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    ports:
+      - 5000:5000
     networks:
       - svcnet
-    depends_on:
-      - elasticsearch
