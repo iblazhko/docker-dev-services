@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a set of scripts to run set services during development using
+This is a set of scripts to run set of services during development using
 Docker Compose. Makes it easier to start / stop set of services on demand.
 
 Supported services:
