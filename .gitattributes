@@ -2,8 +2,8 @@
 *.cmd text eol=crlf
 *.md text eol=lf
 *.sh text eol=lf
-*.env text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+*.env text eol=lf
 *.env.* text eol=lf
 *.git* text eol=lf
