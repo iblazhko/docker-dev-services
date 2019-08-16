@@ -4,6 +4,7 @@ DOCKER_DEVSVC_COMPOSE_FILES="\
  -f compose-eventstore.yml\
  -f compose-kibana.yml\
  -f compose-mongo.yml\
+ -f compose-postgres.yml\
  -f compose-rabbitmq.yml\
  -f network.yml\
  "
