@@ -8,19 +8,40 @@ Param(
 #######################################################################
 # SHARED VARIABLES
 
-$buildDir = $PSScriptRoot
-$repositoryDir = (Get-Item $buildDir).Parent.FullName
+$scriptDir = $PSScriptRoot
+$serviceSetDir = Join-Path $scriptDir "service-sets" $Set
+$serviceSetDefinition = Join-Path $serviceSetDir "services.yaml"
 
-### Working directory must be the directory of this script
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "$SCRIPT_DIR"
+#######################################################################
+# PARAMETERS VALIDATION
 
-### Variables
-. services-versions.sh
-. services-list.sh
+if (-Not $(Test-Path $serviceSetDir)) {
+    Write-Host -ForegroundColor Red "Service set directory does not exist: $serviceSetDir"
+    Exit 1
+}
+if (-Not $(Test-Path $serviceSetDefinition)) {
+    Write-Host -ForegroundColor Red "Service set definition does not exist: $serviceSetDefinition"
+    Exit 1
+}
 
-### Ensure .env.local files exist
-find . -type f -name "*.env" -exec touch {}.local \;
+#######################################################################
+# READ THE SET DEFINITION
 
-### Start services
-docker-compose -p $DOCKER_DEVSVC_PROJECT $DOCKER_DEVSVC_COMPOSE_FILES up -d
+#######################################################################
+# PREPARE THE DOCKER-COMPOSE PARAMETERS
+
+#######################################################################
+# START THE SET
+
+$currentLocation = Get-Location
+try {
+    Set-Location $serviceSetDir
+    Write-Host -ForegroundColor Green "Starting service set $Set"
+# docker-compose -p $DOCKER_DEVSVC_PROJECT $DOCKER_DEVSVC_COMPOSE_FILES up -d
+    Write-Host -ForegroundColor Green "Done"
+}
+finally {
+    Set-Location $currentLocation
+}
+
+
