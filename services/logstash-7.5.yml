@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  logstash:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/logstash/logstash:7.5.0
+    volumes:
+      - ../services/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ../services/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    env_file:
+      - logstash.env
+    ports:
+      - 5000:5000
+    networks:
+      - devsvcnet

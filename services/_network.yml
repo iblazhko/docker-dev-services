@@ -2,5 +2,5 @@ version: '3'
 
 networks:
 
-  svcnet:
+  devsvcnet:
     driver: bridge

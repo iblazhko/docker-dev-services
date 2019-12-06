@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/pwsh
 
 ### Working directory must be the directory of this script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

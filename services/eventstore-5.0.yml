@@ -3,17 +3,16 @@ version: '3'
 services:
 
   eventstore:
-    image: eventstore/eventstore:release-$EVENTSTORE_VERSION
+    image: eventstore/eventstore:release-5.0.5
     volumes:
       - eventstore-data:/var/lib/eventstore
     env_file:
-      - compose-eventstore.env
-      - compose-eventstore.env.local
+      - eventstore.env
     ports:
       - 1113:1113
       - 2113:2113
     networks:
-      - svcnet
+      - devsvcnet
 
 volumes:
 

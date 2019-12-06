@@ -3,17 +3,16 @@ version: '3'
 services:
 
   rabbitmq:
-    image: rabbitmq:${RABBITMQ_VERSION}-management
+    image: rabbitmq:3.8-management
     volumes:
      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
     env_file:
-      - compose-rabbitmq.env
-      - compose-rabbitmq.env.local
+      - rabbitmq.env
     ports:
       - 5672:5672
       - 15672:15672
     networks:
-      - svcnet
+      - devsvcnet
 
 volumes:
 

@@ -3,13 +3,15 @@ version: '3'
 services:
 
   redis:
-    image: redis:$REDIS_VERSION
+    image: redis:5.0
     volumes:
       - redis-data:/data
+    env_file:
+      - redis.env
     ports:
       - 6379:6379
     networks:
-      - svcnet
+      - devsvcnet
 
 volumes:
 

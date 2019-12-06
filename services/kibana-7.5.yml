@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:7.5.0
+    volumes:
+      - ../services/kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - 5601:5601
+    networks:
+      - devsvcnet

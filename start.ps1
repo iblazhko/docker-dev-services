@@ -1,4 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env pwsh
+
+Param(
+    [ValidateNotNullOrEmpty()]
+    [string]$Set = "default"
+)
+
+#######################################################################
+# SHARED VARIABLES
+
+$buildDir = $PSScriptRoot
+$repositoryDir = (Get-Item $buildDir).Parent.FullName
 
 ### Working directory must be the directory of this script
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"

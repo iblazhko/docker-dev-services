@@ -8,17 +8,18 @@ Docker Compose. Makes it easier to start / stop set of services on demand.
 Supported services:
 
 - ELK stack (Elasticsearch + Logstash + Kibana)
+- EventStore
 - MongoDB
+- PostgreSQL
 - RabbitMQ
 - Redis
-- EventStore
 - SQL Server
-- PostgreSQL
 - Vault
 
 ## Prerequisites
 
 - Docker with Docker Compose
+- PowerShell Core
 
 ## Usage
 

@@ -3,16 +3,15 @@ version: '3'
 services:
 
   postgres:
-    image: postgres:${POSTGRES_VERSION}
+    image: postgres:12.1
     volumes:
       - postgres-data:/var/lib/postgresql
     env_file:
-      - compose-postgres.env
-      - compose-postgres.env.local
+      - postgres.env
     ports:
       - 5432:5432
     networks:
-      - svcnet
+      - devsvcnet
 
 volumes:
 
