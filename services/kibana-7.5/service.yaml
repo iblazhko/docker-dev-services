@@ -9,6 +9,7 @@ services:
     volumes:
       - ./kibana-7.5/config/:/usr/share/kibana/config:ro
     env_file:
+      - kibana-7.5/service.env
       - ../.env/kibana-7.5.env
     ports:
       - 5601:5601

@@ -16,10 +16,11 @@ Param(
 $rootDir = $PSScriptRoot
 $serviceSetDefinition = Join-Path $rootDir 'service-sets' "$Set.yaml"
 
+Write-Host -ForegroundColor Green "Docker Dev Services: $Set $Action"
+
 if ($Verbose) {
     Write-Host -ForegroundColor DarkGray "Root directory: $rootDir"
     Write-Host -ForegroundColor DarkGray "Service set definition file: $serviceSetDefinition"
-    Write-Host -ForegroundColor DarkGray "Action: $Action"
 }
 
 #######################################################################
@@ -92,7 +93,6 @@ try {
     Set-Location $rootDir
     if ($Verbose) { Write-Host -ForegroundColor DarkGray "docker-compose $composeArguments" }
     Start-Process -FilePath "docker-compose" -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
-    Write-Host -ForegroundColor Green "Done"
 }
 finally {
     Set-Location $currentLocation

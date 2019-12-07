@@ -6,10 +6,8 @@ services:
     image: mcr.microsoft.com/mssql/server:2017-latest
     volumes:
       - sqlserver-data:/var/opt/mssql
-    environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "t6PyjApETNkdVzR6QG3K"
     env_file:
+      - sqlserver-2017/service.env
       - ../.env/sqlserver-2017.env
     ports:
       - 1433:1433

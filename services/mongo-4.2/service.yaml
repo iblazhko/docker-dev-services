@@ -6,10 +6,8 @@ services:
     image: mongo:4.2.1
     volumes:
       - mongo-data:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: "root"
-      MONGO_INITDB_ROOT_PASSWORD: "BNYpXiaRK7qnL3hmY5pQ"
     env_file:
+      - mongo-4.2/service.env
       - ../.env/mongo-4.2.env
     ports:
       - 27017:27017

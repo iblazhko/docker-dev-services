@@ -6,10 +6,8 @@ services:
     image: eventstore/eventstore:release-5.0.5
     volumes:
       - eventstore-data:/var/lib/eventstore
-    environment:
-      EVENTSTORE_RUN_PROJECTIONS: "All"
-      EVENTSTORE_START_STANDARD_PROJECTIONS: "true"
     env_file:
+      - eventstore-5.0/service.env
       - ../.env/eventstore-5.0.env
     ports:
       - 1113:1113
