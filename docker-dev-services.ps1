@@ -32,8 +32,8 @@ if (-Not $(Test-Path $serviceSetDefinition)) {
 
 #######################################################################
 # READ THE SET DEFINITION
-if (-Not $(Get-Module | Where-Object -Property Name -EQ -Value 'powershell-yaml')) {
-    if (-Not $(Get-InstalledModule | Where-Object -Property Name -EQ -Value 'powershell-yaml')) {
+if (-not $(Get-Module | Where-Object -Property Name -eq -Value 'powershell-yaml')) {
+    if (-not $(Get-InstalledModule | Where-Object -Property Name -eq -Value 'powershell-yaml')) {
         Install-Module powershell-yaml -Force
     }
     Import-Module powershell-yaml -Force
