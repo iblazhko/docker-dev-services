@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  redis:
+    image: redis:5.0
+    volumes:
+      - redis-data:/data
+    env_file:
+      - ../.env/redis-5.0.env
+    ports:
+      - 6379:6379
+    networks:
+      - devsvcnet
+
+volumes:
+
+  redis-data:
+    driver: local

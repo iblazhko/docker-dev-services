@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:12.1
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: "pgadmin"
+      POSTGRES_PASSWORD: "changeit"
+      POSTGRES_DB: "postgres_dev"
+    env_file:
+      - ../.env/postgres-12.1.env
+    ports:
+      - 5432:5432
+    networks:
+      - devsvcnet
+
+volumes:
+
+  postgres-data:
+    driver: local

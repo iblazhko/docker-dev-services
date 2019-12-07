@@ -1,0 +1,9 @@
+set: default
+services:
+  - elasticsearch-7.5
+  - eventstore-5.0
+  - kibana-7.5
+  - mongo-4.2
+  - postgres-12.1
+  - rabbitmq-3.8
+  - vault-1.3

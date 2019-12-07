@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "t6PyjApETNkdVzR6QG3K"
+    env_file:
+      - ../.env/sqlserver-2017.env
+    ports:
+      - 1433:1433
+    networks:
+      - devsvcnet
+
+volumes:
+
+  sqlserver-data:
+    driver: local

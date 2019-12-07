@@ -1,2 +1,14 @@
-*.env.local
+# VisualStudio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.ionide/
+
+# Local service sets definitions and environment
+/service-sets/*.local.yaml
+/.env/
+
+# Various temp files
 .DS_Store
