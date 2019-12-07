@@ -40,6 +40,32 @@ Sets are defined in `service-set/set.yaml` files. There are two sets provided ou
 - Create a service set file `service-sets/<set>.local.yaml` (there is a rule in `.gitignore` to exclude `.local.yaml` files from source control) 
 - Review include services `service.yaml` definitions. If you need to change environment variables to a service, add file `.env/<service-name>-<version>.env`. Typically this would be used to change default credentials.
 
+
+**NOTE:** You can define multiple custom service sets, however it is recomended to use them one at a time. All services use same bridge network, so if a service is included in multiple sets, Docker Compose will allocate distinct names for the service in different sets, but they will still use same network port, so only one service can be active at a time that uses that port.
+
+It is recommented to organize sets by product / use case. E.g. if Product1 us using ELK and MongoDB, and Product2 uses ELK, Postgres, and Redis, you may have following sets:
+
+`product-sets/prod1.local.yaml`
+
+```yaml
+set: prod1
+services:
+  - elasticsearch-7.5
+  - kibana-7.5
+  - mongo-4.2
+```
+
+`product-sets/prod2.local.yaml`
+
+```yaml
+set: template
+services:
+  - elasticsearch-7.5
+  - kibana-7.5
+  - postgres-12.1
+  - redis-5.0
+```
+
 ### Start
 
 ```bash
