@@ -90,9 +90,7 @@ if ($Action -eq 'Stop') { $composeArguments = $composeArguments + 'down' }
 $currentLocation = Get-Location
 try {
     Set-Location $rootDir
-    if ($Verbose) {
-        Write-Host -ForegroundColor DarkGray "docker-compose $composeArguments "
-    }
+    if ($Verbose) { Write-Host -ForegroundColor DarkGray "docker-compose $composeArguments" }
     Start-Process -FilePath "docker-compose" -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
     Write-Host -ForegroundColor Green "Done"
 }
