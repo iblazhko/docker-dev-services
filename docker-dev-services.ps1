@@ -46,8 +46,13 @@ if ($Verbose) {
     Write-Host -ForegroundColor DarkGray $($services | ConvertTo-Yaml)
 }
 
+if (-not $services.set) {
+    Write-Host -ForegroundColor Red "Service set name is not defined in $serviceSetDefinition"
+    Exit 1
+}
+
 if (-not $($services.services.Length -gt 0)) {
-    Write-Host -ForegroundColor Red "No services listed in $serviceSetDefinition"
+    Write-Host -ForegroundColor Red "No services defined in $serviceSetDefinition"
     Exit 1
 }
 
