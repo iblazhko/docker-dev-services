@@ -5,10 +5,12 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
     volumes:
-      - ../services/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./elasticsearch-7.5/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:
+      ES_JAVA_OPTS: "-Xmx512m -Xms512m"
     env_file:
-      - elasticsearch.env
+      - ../.env/elasticsearch-7.5.env
     ulimits:
       memlock:
         soft: -1

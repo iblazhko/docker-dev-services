@@ -6,8 +6,9 @@
 !.vscode/extensions.json
 .ionide/
 
-# Local service sets definitions
-/service-sets/*.local/
+# Local service sets definitions and environment
+/service-sets/*.local.yaml
+/.env/
 
 # Various temp files
 .DS_Store

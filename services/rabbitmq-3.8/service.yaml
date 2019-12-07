@@ -6,8 +6,12 @@ services:
     image: rabbitmq:3.8-management
     volumes:
      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "changeit"
+      RABBITMQ_DEFAULT_VHOST: "default"
     env_file:
-      - rabbitmq.env
+      - ../.env/rabbitmq-3.8.env
     ports:
       - 5672:5672
       - 15672:15672

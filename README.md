@@ -18,53 +18,36 @@ Supported services:
 
 ## Prerequisites
 
-- Docker with Docker Compose
-- PowerShell Core
+- Docker with Docker Compose: <https://docs.docker.com/install/>
+- PowerShell Core: <https://github.com/powershell/powershell>
+
+## Overview
+
+Set of services is started using Docker Compose.
+
+Each service in the set is defined in its own directory `services/<service-name>-<version>/service.yaml`.
+
+All services use bridge network `devsvcnet` (defined in `services/network.yaml`), so they are immediately available on the host machine.
+
+Sets are defined in `service-set/set.yaml` files. There are two sets provided out of the box:
+
+- `default`
+- `_template`: this set has all the supported services included and can be used as a starting point when creating own sets
 
 ## Usage
 
-Review `<service>.yaml` files, you may want to make some adjustments e.g.
-mounted data volume path etc.
+- Clone or copy this repository locally
+- Create a service set file `service-sets/<set>.local.yaml` (there is a rule in `.gitignore` to exclude `.local.yaml` files from source control) 
+- Review include services `service.yaml` definitions. If you need to change environment variables to a service, add file `.env/<service-name>-<version>.env`. Typically this would be used to change default credentials.
 
-You will also find `compose-<service>.env` files for some of the services. This
-is where devault environment variables are defined. If you need to change
-service's environment variables, create `compose-<service>.env.local` file and
-put your environment variables there. `compose-<service>.env.local` files are
-local and should not be checked into source control (there is a rule in
-`.gitignore` to help with that).
-
-### Linux, macOS
-
-Review `services-versions.sh`, adjust version numbers if needed.
-
-Review `services-list.sh`, adjust list of services that will be started.
-
-Start all the services:
+### Start
 
 ```bash
-start.sh
+start.ps1 -Set <set-name>
 ```
 
-Stop all the services and remove containers:
+### Stop
 
 ```bash
-stop.sh
-```
-
-### Windows
-
-Review `services-versions.cmd`, adjust version numbers if needed.
-
-Review `services-list.cmd`, adjust list of services that will be started.
-
-Start all the services:
-
-```bash
-start.cmd
-```
-
-Stop all the services and remove containers:
-
-```bash
-stop.cmd
+stop.ps1 -Set <set-name>
 ```
