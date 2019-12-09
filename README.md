@@ -36,9 +36,9 @@ Sets are defined in `service-set/set.yaml` files. There are two sets provided ou
 
 ## Usage
 
-- Clone or copy this repository locally
+- Clone or copy this repository locally, or download from [releases](https://github.com/iblazhko/docker-dev-services/releases/) page
 - Create a service set file `service-sets/<set>.local.yaml` (there is a rule in `.gitignore` to exclude `.local.yaml` files from source control) 
-- Review include services `service.yaml` definitions. If you need to change environment variables to a service, add file `.env/<service-name>-<version>.env`. Typically this would be used to change default credentials.
+- Review included services `service.yaml` definitions. If you need to change environment variables to a service, add file `.env/<service-name>-<version>.env`. Typically this would be used to change default credentials. See corresponding service `service.env` file for a reference.
 
 It is recommented to organize sets by products / use cases. E.g. if Product1 us using ELK and MongoDB, and Product2 uses ELK, Postgres, and Redis, you may have following sets:
 
