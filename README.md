@@ -63,16 +63,20 @@ services:
   - redis-5.0
 ```
 
-**NOTE:** You can define multiple custom service sets, however it is recomended to use them one at a time. All services use same bridge network, so if a service is included in multiple sets, Docker Compose will allocate distinct names for the service in different sets, but they will still use same network port, so only one service can be active at a time that uses that port.
+**NOTE:** You can define multiple custom service sets, however it is only possible to use them one at a time. All services use same bridge network, so if a service is included in multiple sets, Docker Compose will allocate distinct names for the service in different sets, but they will still use same network port, so only one service can be active at a time that uses that port.
 
 ### Start
 
+Start service set by name:
+
 ```bash
-start.ps1 -Set <set-name>
+start.ps1 <set-name>
 ```
 
 ### Stop
 
+Stop service set that was previously started by `start.ps1 <set-name>`.
+
 ```bash
-stop.ps1 -Set <set-name>
+stop.ps1
 ```
