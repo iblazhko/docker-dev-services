@@ -2,18 +2,41 @@
 
 Param(
     [ValidateNotNullOrEmpty()]
-    [string]$Set = 'default',
-
-    [ValidateNotNullOrEmpty()]
+    [ValidateSet('Start', 'Stop')]
     [string]$Action = 'Start',
 
+    [ValidateNotNullOrEmpty()]
+    [string]$Set,
+
+    [switch]$Force,
     [switch]$Verbose
 )
+
+$rootDir = $PSScriptRoot
+
+#######################################################################
+# SINGLE INSTANCE
+$activeSetFile = Join-Path $rootDir '.active-set'
+if ($(Test-Path $activeSetFile)) { $activeSet = Get-Content $activeSetFile }
+if ($activeSet) {
+    if ($($Action -eq 'Start') -and $($activeSet -ne $Set)) {
+        Write-Host "Service set $activeSet is already active"
+        if (-Not $Force) { Exit 1 }
+    }
+    if ($Action -eq 'Stop') {
+        $Set = $activeSet
+    }
+}
+else {
+    if ($Action -eq 'Stop') {
+        Write-Host "No service sets are active"
+        if (-Not $Force) { Exit 1 }
+    }
+}
 
 #######################################################################
 # SHARED VARIABLES
 
-$rootDir = $PSScriptRoot
 $serviceSetDefinition = Join-Path $rootDir 'service-sets' "$Set.yaml"
 
 Write-Host -ForegroundColor Green "Docker Dev Services: $Set $Action"
@@ -93,6 +116,9 @@ try {
     Set-Location $rootDir
     if ($Verbose) { Write-Host -ForegroundColor DarkGray "docker-compose $composeArguments" }
     Start-Process -FilePath "docker-compose" -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
+
+    if ($Action -eq 'Start') { Set-Content -Path $activeSetFile $Set }
+    if ($Action -eq 'Stop') { Set-Content -Path $activeSetFile '' }
 }
 finally {
     Set-Location $currentLocation
