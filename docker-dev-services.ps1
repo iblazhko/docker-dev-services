@@ -20,7 +20,7 @@ $activeSetFile = Join-Path $rootDir '.active-set'
 if ($(Test-Path $activeSetFile)) { $activeSet = Get-Content $activeSetFile }
 if ($activeSet) {
     if ($($Action -eq 'Start') -and $($activeSet -ne $Set)) {
-        Write-Host "Service set $activeSet is already active"
+        Write-Host "Already have active service set: $activeSet"
         if (-Not $Force) { Exit 1 }
     }
     if ($Action -eq 'Stop') {
