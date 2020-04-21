@@ -13,6 +13,7 @@ Supported services:
 - PostgreSQL
 - RabbitMQ
 - Redis
+- Seq
 - SQL Server
 - Vault
 
