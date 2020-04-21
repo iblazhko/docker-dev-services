@@ -1,9 +1,8 @@
-version: '3'
+version: "3"
 
 services:
-
   eventstore:
-    image: eventstore/eventstore:release-5.0.5
+    image: eventstore/eventstore:release-5.0.7
     volumes:
       - eventstore-data:/var/lib/eventstore
     env_file:
@@ -16,6 +15,5 @@ services:
       - devsvcnet
 
 volumes:
-
   eventstore-data:
     driver: local

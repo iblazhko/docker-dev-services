@@ -3,7 +3,7 @@ version: '3'
 services:
 
   rabbitmq:
-    image: rabbitmq:3.8-management
+    image: rabbitmq:3.8.3-management
     volumes:
      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
     env_file:

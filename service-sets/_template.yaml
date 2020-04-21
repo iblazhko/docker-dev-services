@@ -1,12 +1,13 @@
 set: template
 services:
-  - elasticsearch-7.5
+  - elasticsearch-7.6
   - eventstore-5.0
-  - kibana-7.5
-  - logstash-7.5
+  - kibana-7.6
+  - logstash-7.6
   - mongo-4.2
-  - postgres-12.1
+  - postgres-12.2
   - rabbitmq-3.8
   - redis-5.0
+  - seq-5.1
   - sqlserver-2017
-  - vault-1.3
+  - vault-1.4
