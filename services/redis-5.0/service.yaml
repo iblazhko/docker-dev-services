@@ -3,7 +3,7 @@ version: '3'
 services:
 
   redis:
-    image: redis:5.0
+    image: redis:5.0.9
     volumes:
       - redis-data:/data
     env_file:

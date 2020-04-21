@@ -47,8 +47,8 @@ It is recommented to organize sets by products / use cases. E.g. if Product1 us 
 ```yaml
 set: prod1
 services:
-  - elasticsearch-7.5
-  - kibana-7.5
+  - elasticsearch-7.6
+  - kibana-7.6
   - mongo-4.2
 ```
 
@@ -57,9 +57,9 @@ services:
 ```yaml
 set: prod2
 services:
-  - elasticsearch-7.5
-  - kibana-7.5
-  - postgres-12.1
+  - elasticsearch-7.6
+  - kibana-7.6
+  - postgres-12.2
   - redis-5.0
 ```
 
