@@ -1,6 +1,7 @@
 set: default
 services:
   - eventstore-5.0
+  - influxdb-1.8
   - mongo-4.2
   - postgres-12.2
   - rabbitmq-3.8

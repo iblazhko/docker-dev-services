@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  influxdb:
+    image: influxdb:1.8
+    volumes:
+      - influxdb-data:/var/lib/influxdb
+    env_file:
+      - influxdb-1.8/service.env
+      - ../.env/influxdb-1.8.env
+    ports:
+      - 8086:8086
+      - 2003:2003
+    networks:
+      - devsvcnet
+
+  chronograf:
+    image: chronograf:1.8
+    command: chronograf --influxdb-url=http://influxdb:8086
+    volumes:
+      - chronograf-data:/var/lib/chronograf
+    ports:
+      - 8888:8888
+    networks:
+      - devsvcnet
+
+  # telegraf:
+  #   image: telegraf:1.14
+  #   volumes:
+  #     - telegraf-data:/var/lib/telegraf
+  #   ports:
+  #     - 8888:8888
+  #   networks:
+  #     - devsvcnet
+
+volumes:
+  influxdb-data:
+    driver: local
+  chronograf-data:
+    driver: local

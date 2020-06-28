@@ -2,6 +2,7 @@ set: template
 services:
   - elasticsearch-7.6
   - eventstore-5.0
+  - influxdb-1.8
   - kibana-7.6
   - logstash-7.6
   - mongo-4.2
