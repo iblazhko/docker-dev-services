@@ -1,6 +1,7 @@
 * text=false
-*.md text eol=lf
+*.md text
 *.ps1 text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
-*.git* text eol=lf
+*.py text eol=lf
+*.yml text
+*.yaml text
+*.git* text
