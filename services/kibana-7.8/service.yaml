@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  kibana:
+    depends_on:
+      - elasticsearch
+    image: docker.elastic.co/kibana/kibana:7.8.0
+    volumes:
+      - ./kibana-7.r8config/:/usr/share/kibana/config:ro
+    env_file:
+      - kibana-7.8/service.env
+      - ../.env/kibana-7.8.env
+    ports:
+      - 5601:5601
+    networks:
+      - devsvcnet

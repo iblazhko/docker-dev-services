@@ -1,16 +1,15 @@
-version: '3'
+version: "3"
 
 services:
-
   vault:
-    image: vault:1.4.0
+    image: vault:1.5.0
     volumes:
       - ./vault-1.4/config:/vault/config
       - vault-data:/vault/file
     entrypoint: vault server -dev -dev-kv-v1 -config=/vault/config/vault.json
     env_file:
-      - vault-1.4/service.env
-      - ../.env/vault-1.4.env
+      - vault-1.5/service.env
+      - ../.env/vault-1.5.env
     cap_add:
       - IPC_LOCK
     ports:
@@ -20,6 +19,5 @@ services:
       - devsvcnet
 
 volumes:
-
   vault-data:
     driver: local

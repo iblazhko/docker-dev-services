@@ -2,13 +2,14 @@
 
 ## Description
 
-This is a set of scripts to run set of services during development using
-Docker Compose. Makes it easier to start / stop set of services on demand.
+This is a tool to run set of services during development using Docker Compose.
+Makes it easier to start / stop set of services on demand.
 
 Supported services:
 
 - ELK stack (Elasticsearch + Logstash + Kibana)
-- EventStore
+- EventStoreDB
+- InfluxDB
 - MongoDB
 - PostgreSQL
 - RabbitMQ
@@ -32,7 +33,7 @@ All services use bridge network `devsvcnet` (defined in `services/network.yaml`)
 
 Sets are defined in `service-set/set.yaml` files. There are two sets provided out of the box:
 
-- `default`
+- `default`: EventStoreDB, RabbitMQ, MongoDB, PostgreSQL, Seq
 - `_template`: this set has all the supported services included and can be used as a starting point when creating own sets
 
 ## Usage
@@ -41,7 +42,7 @@ Sets are defined in `service-set/set.yaml` files. There are two sets provided ou
 - Create a service set file `service-sets/<set>.local.yaml` (there is a rule in `.gitignore` to exclude `.local.yaml` files from source control) 
 - Review included services `service.yaml` definitions. If you need to change environment variables to a service, add file `.env/<service-name>-<version>.env`. Typically this would be used to change default credentials. See corresponding service `service.env` file for a reference.
 
-It is recommented to organize sets by products / use cases. E.g. if Product1 us using ELK and MongoDB, and Product2 uses ELK, Postgres, and Redis, you may have following sets:
+It is recommented to organize sets by products / use cases. E.g. if *Product1* us using ELK and MongoDB, and *Product2* uses ELK, Postgres, and Redis, you may have following sets:
 
 `product-sets/prod1.local.yaml`
 
@@ -70,7 +71,7 @@ services:
 
 Start service set by name:
 
-```bash
+```sh
 start.ps1 <set-name>
 ```
 
@@ -78,6 +79,6 @@ start.ps1 <set-name>
 
 Stop service set that was previously started by `start.ps1 <set-name>`.
 
-```bash
+```sh
 stop.ps1
 ```

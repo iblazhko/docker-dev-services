@@ -1,7 +1,7 @@
 set: default
 services:
-  - eventstore-5.0
+  - eventstore-20.6
   - mongo-4.2
-  - postgres-12.2
+  - postgres-12.3
   - rabbitmq-3.8
-  - seq-5.1
+  - seq-2020.1

@@ -1,15 +1,14 @@
-version: '3'
+version: "3"
 
 services:
-
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     volumes:
-      - ./elasticsearch-7.6/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./elasticsearch-7.8/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - elasticsearch-data:/usr/share/elasticsearch/data
     env_file:
-      - elasticsearch-7.6/service.env
-      - ../.env/elasticsearch-7.6.env
+      - elasticsearch-7.8/service.env
+      - ../.env/elasticsearch-7.8.env
     ulimits:
       memlock:
         soft: -1
@@ -21,6 +20,5 @@ services:
       - devsvcnet
 
 volumes:
-
   elasticsearch-data:
     driver: local

@@ -1,20 +1,18 @@
-version: '3'
+version: "3"
 
 services:
-
   postgres:
-    image: postgres:12.2
+    image: postgres:12.3
     volumes:
       - postgres-data:/var/lib/postgresql
     env_file:
-      - postgres-12.2/service.env
-      - ../.env/postgres-12.2.env
+      - postgres-12.3/service.env
+      - ../.env/postgres-12.3.env
     ports:
       - 5432:5432
     networks:
       - devsvcnet
 
 volumes:
-
   postgres-data:
     driver: local
