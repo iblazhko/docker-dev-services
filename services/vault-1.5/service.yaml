@@ -4,7 +4,7 @@ services:
   vault:
     image: vault:1.5.0
     volumes:
-      - ./vault-1.4/config:/vault/config
+      - ./vault-1.5/config:/vault/config
       - vault-data:/vault/file
     entrypoint: vault server -dev -dev-kv-v1 -config=/vault/config/vault.json
     env_file:
