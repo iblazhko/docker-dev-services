@@ -83,7 +83,7 @@ if (-not $($services.services.Length -gt 0)) {
 #######################################################################
 # PREPARE THE DOCKER-COMPOSE PARAMETERS
 
-$composeArguments = '-p', $services.set, '-f', 'services/network.yaml'
+$composeArguments = 'compose', '-p', $services.set, '-f', 'services/network.yaml'
 foreach ($x in $services.services) {
     $composeArguments = $composeArguments + '-f' + "services/$x/service.yaml"
 }
@@ -115,7 +115,7 @@ $currentLocation = Get-Location
 try {
     Set-Location $rootDir
     if ($Verbose) { Write-Host -ForegroundColor DarkGray "docker-compose $composeArguments" }
-    Start-Process -FilePath "docker-compose" -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
+    Start-Process -FilePath "docker" -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
 
     if ($Action -eq 'Start') { Set-Content -Path $activeSetFile $Set }
     if ($Action -eq 'Stop') { Set-Content -Path $activeSetFile '' }

@@ -2,12 +2,12 @@ version: "3"
 
 services:
   seq:
-    image: datalust/seq:5.1
+    image: datalust/seq:2022.1
     volumes:
       - seq-data:/data
     env_file:
-      - seq-5.1/service.env
-      - ../.env/seq-5.1.env
+      - seq-2022.1/service.env
+      - ../.env/seq-2022.1.env
     ports:
       - 5340:80
       - 5341:5341

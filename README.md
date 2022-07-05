@@ -20,7 +20,7 @@ Supported services:
 
 ## Prerequisites
 
-- Docker with Docker Compose: <https://docs.docker.com/install/>
+- Docker with Docker Compose CLI plugin: <https://docs.docker.com/install/>, <https://docs.docker.com/compose/install/compose-plugin/>
 - PowerShell Core: <https://github.com/powershell/powershell>
 
 ## Overview
@@ -49,8 +49,8 @@ It is recommented to organize sets by products / use cases. E.g. if *Product1* u
 ```yaml
 set: prod1
 services:
-  - elasticsearch-7.6
-  - kibana-7.6
+  - elasticsearch-8.3
+  - kibana-8.3
   - mongo-4.2
 ```
 
@@ -59,10 +59,10 @@ services:
 ```yaml
 set: prod2
 services:
-  - elasticsearch-7.6
-  - kibana-7.6
-  - postgres-12.2
-  - redis-5.0
+  - elasticsearch-8.3
+  - kibana-8.3
+  - postgres-14.4
+  - redis-7.0
 ```
 
 **NOTE:** You can define multiple custom service sets, however it is only possible to use them one at a time. All services use same bridge network, so if a service is included in multiple sets, Docker Compose will allocate distinct names for the service in different sets, but they will still use same network port, so only one service can be active at a time that uses that port.
@@ -72,7 +72,7 @@ services:
 Start service set by name:
 
 ```sh
-start.ps1 <set-name>
+start.ps1 -Set <set-name>
 ```
 
 ### Stop
