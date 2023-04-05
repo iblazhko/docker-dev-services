@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  eventstore:
+    image: eventstore/eventstore:22.10.1-buster-slim
+    volumes:
+      - eventstore-data:/var/lib/eventstore
+    env_file:
+      - eventstore-22.10/service.env
+      - ../.env/eventstore-22.10.env
+    ports:
+      - 1113:1113
+      - 2113:2113
+    networks:
+      - devsvcnet
+
+volumes:
+  eventstore-data:
+    driver: local

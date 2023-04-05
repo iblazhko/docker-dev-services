@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+    env_file:
+      - rabbitmq-3.10/service.env
+      - ../.env/rabbitmq-3.10.env
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - devsvcnet
+
+volumes:
+  rabbitmq-data:
+    driver: local
