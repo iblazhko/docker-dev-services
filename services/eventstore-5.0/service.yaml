@@ -1,19 +1,19 @@
 version: "3"
 
 services:
-  eventstore:
+  eventstore5:
     image: eventstore/eventstore:release-5.0.11
     volumes:
-      - eventstore-data:/var/lib/eventstore
+      - eventstore5-data:/var/lib/eventstore
     env_file:
       - eventstore-5.0/service.env
       - ../.env/eventstore-5.0.env
     ports:
-      - 1113:1113
-      - 2113:2113
+      - 51113:1113
+      - 52113:2113
     networks:
       - devsvcnet
 
 volumes:
-  eventstore-data:
+  eventstore5-data:
     driver: local

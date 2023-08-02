@@ -1,0 +1,6 @@
+{
+    "backend": {
+        "inmem": {}
+    },
+    "ui": true
+}
