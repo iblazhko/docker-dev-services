@@ -4,7 +4,7 @@ services:
   mongo:
     image: mongo:4.2
     volumes:
-      - mongo-data:/data/db
+      - mongo-4.2-data:/data/db
     env_file:
       - mongo-4.2/service.env
       - ../.env/mongo-4.2.env
@@ -14,5 +14,5 @@ services:
       - devsvcnet
 
 volumes:
-  mongo-data:
+  mongo-4.2-data:
     driver: local

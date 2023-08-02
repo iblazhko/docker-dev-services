@@ -4,7 +4,7 @@ services:
   eventstore:
     image: ghcr.io/eventstore/eventstore:22.10.2-alpha-arm64v8
     volumes:
-      - eventstore-data:/var/lib/eventstore
+      - eventstore-22.10-data:/var/lib/eventstore
     env_file:
       - eventstore-22.10-arm64/service.env
       - ../.env/eventstore-22.10-arm64.env
@@ -15,5 +15,5 @@ services:
       - devsvcnet
 
 volumes:
-  eventstore-data:
+  eventstore-22.10-data:
     driver: local

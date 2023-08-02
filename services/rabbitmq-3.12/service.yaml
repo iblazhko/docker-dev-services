@@ -4,7 +4,7 @@ services:
   rabbitmq:
     image: rabbitmq:3.12-management
     volumes:
-      - rabbitmq-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
+      - rabbitmq-3.12-data:/var/lib/rabbitmq/mnesia/rabbit@my-rabbit
     env_file:
       - rabbitmq-3.12/service.env
       - ../.env/rabbitmq-3.12.env
@@ -15,5 +15,5 @@ services:
       - devsvcnet
 
 volumes:
-  rabbitmq-data:
+  rabbitmq-3.12-data:
     driver: local

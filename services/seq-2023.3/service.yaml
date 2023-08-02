@@ -4,7 +4,7 @@ services:
   seq:
     image: datalust/seq:2023.3
     volumes:
-      - seq-data:/data
+      - seq-2023.3-data:/data
     env_file:
       - seq-2023.3/service.env
       - ../.env/seq-2023.3.env
@@ -15,5 +15,5 @@ services:
       - devsvcnet
 
 volumes:
-  seq-data:
+  seq-2023.3-data:
     driver: local

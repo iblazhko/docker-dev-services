@@ -4,7 +4,7 @@ services:
   redis:
     image: redis:7.0
     volumes:
-      - redis-data:/data
+      - redis-7.0-data:/data
     env_file:
       - redis-7.0/service.env
       - ../.env/redis-7.0.env
@@ -14,5 +14,5 @@ services:
       - devsvcnet
 
 volumes:
-  redis-data:
+  redis-7.0-data:
     driver: local

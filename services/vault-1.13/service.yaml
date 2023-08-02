@@ -5,7 +5,7 @@ services:
     image: vault:1.13
     volumes:
       - ./vault-1.13/config:/vault/config
-      - vault-data:/vault/file
+      - vault-1.13-data:/vault/file
     entrypoint: vault server -dev -dev-kv-v1 -config=/vault/config/vault.json
     env_file:
       - vault-1.13/service.env
@@ -19,5 +19,5 @@ services:
       - devsvcnet
 
 volumes:
-  vault-data:
+  vault-1.13-data:
     driver: local

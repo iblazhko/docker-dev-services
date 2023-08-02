@@ -4,7 +4,7 @@ services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     volumes:
-      - sqlserver-data:/var/opt/mssql
+      - sqlserver-2022-data:/var/opt/mssql
     env_file:
       - sqlserver-2022/service.env
       - ../.env/sqlserver-2022.env
@@ -14,5 +14,5 @@ services:
       - devsvcnet
 
 volumes:
-  sqlserver-data:
+  sqlserver-2022-data:
     driver: local

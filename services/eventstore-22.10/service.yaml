@@ -4,7 +4,7 @@ services:
   eventstore:
     image: eventstore/eventstore:22.10.2-buster-slim
     volumes:
-      - eventstore-data:/var/lib/eventstore
+      - eventstore-22.10-data:/var/lib/eventstore
     env_file:
       - eventstore-22.10/service.env
       - ../.env/eventstore-22.10.env
@@ -15,5 +15,5 @@ services:
       - devsvcnet
 
 volumes:
-  eventstore-data:
+  eventstore-22.10-data:
     driver: local

@@ -5,7 +5,7 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.3.1
     volumes:
       - ./elasticsearch-8.3/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - elasticsearch-data:/usr/share/elasticsearch/data
+      - elasticsearch-8.3-data:/usr/share/elasticsearch/data
     env_file:
       - elasticsearch-8.3/service.env
       - ../.env/elasticsearch-8.3.env
@@ -20,5 +20,5 @@ services:
       - devsvcnet
 
 volumes:
-  elasticsearch-data:
+  elasticsearch-8.3-data:
     driver: local

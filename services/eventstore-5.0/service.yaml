@@ -4,7 +4,7 @@ services:
   eventstore5:
     image: eventstore/eventstore:release-5.0.11
     volumes:
-      - eventstore5-data:/var/lib/eventstore
+      - eventstore-5.0-data:/var/lib/eventstore
     env_file:
       - eventstore-5.0/service.env
       - ../.env/eventstore-5.0.env
@@ -15,5 +15,5 @@ services:
       - devsvcnet
 
 volumes:
-  eventstore5-data:
+  eventstore-5.0-data:
     driver: local

@@ -4,7 +4,7 @@ services:
   influxdb:
     image: influxdb:1.8
     volumes:
-      - influxdb-data:/var/lib/influxdb
+      - influxdb-1.8-data:/var/lib/influxdb
     env_file:
       - influxdb-1.8/service.env
       - ../.env/influxdb-1.8.env
@@ -18,7 +18,7 @@ services:
     image: chronograf:1.8
     command: chronograf --influxdb-url=http://influxdb:8086
     volumes:
-      - chronograf-data:/var/lib/chronograf
+      - chronograf-1.8-data:/var/lib/chronograf
     ports:
       - 8888:8888
     networks:
@@ -34,7 +34,7 @@ services:
   #     - devsvcnet
 
 volumes:
-  influxdb-data:
+  influxdb-1.8-data:
     driver: local
-  chronograf-data:
+  chronograf-1.8-data:
     driver: local
