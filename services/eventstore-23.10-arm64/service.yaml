@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  eventstore:
+    image: eventstore/eventstore:23.10.0-alpha-arm64v8
+    volumes:
+      - eventstore-data:/var/lib/eventstore
+    env_file:
+      - eventstore-23.10-arm64/service.env
+      - ../.env/eventstore-23.10-arm64.env
+    ports:
+      - 1113:1113
+      - 2113:2113
+    networks:
+      - devsvcnet
+
+volumes:
+  eventstore-23.10-data:
+    driver: local

@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  mongo:
+    image: mongo:7.0
+    volumes:
+      - mongo-7.0-data:/data/db
+    env_file:
+      - mongo-7.0/service.env
+      - ../.env/mongo-7.0.env
+    ports:
+      - 27017:27017
+    networks:
+      - devsvcnet
+
+volumes:
+  mongo-7.0-data:
+    driver: local

@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  seq:
+    image: datalust/seq:2024.1
+    volumes:
+      - seq-2024.1-data:/data
+    env_file:
+      - seq-2024.1/service.env
+      - ../.env/seq-2024.1.env
+    ports:
+      - 5340:80
+      - 5341:5341
+    networks:
+      - devsvcnet
+
+volumes:
+  seq-2024.1-data:
+    driver: local

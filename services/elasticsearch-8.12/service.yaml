@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.12.1
+    volumes:
+      - ./elasticsearch-8.12/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elasticsearch-8.12-data:/usr/share/elasticsearch/data
+    env_file:
+      - elasticsearch-8.12/service.env
+      - ../.env/elasticsearch-8.12.env
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - devsvcnet
+
+volumes:
+  elasticsearch-8.12-data:
+    driver: local

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   vault:
-    image: vault:1.13
+    image: vault:1.13.3
     volumes:
       - ./vault-1.13/config:/vault/config
       - vault-1.13-data:/vault/file
