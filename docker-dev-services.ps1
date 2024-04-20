@@ -8,6 +8,10 @@ Param(
     [ValidateNotNullOrEmpty()]
     [string]$Set,
 
+    [ValidateNotNullOrEmpty()]
+    [ValidateSet('docker', 'podman')]
+    [string]$Engine = 'docker',
+
     [switch]$Force,
     [switch]$Verbose
 )
@@ -17,7 +21,15 @@ $rootDir = $PSScriptRoot
 #######################################################################
 # SINGLE INSTANCE
 $activeSetFile = Join-Path $rootDir '.active-set'
-if ($(Test-Path $activeSetFile)) { $activeSet = Get-Content $activeSetFile }
+if ($(Test-Path $activeSetFile)) {
+    $activeSetContent = Get-Content $activeSetFile
+    $activeSetParts = $activeSetContent -Split ':'
+    if ($activeSetParts.Length -eq 2) {
+        $activeEngine = $activeSetParts[0]
+        $activeSet = $activeSetParts[1]
+    }
+}
+
 if ($activeSet) {
     if ($($Action -eq 'Start') -and $($activeSet -ne $Set)) {
         Write-Host "Already have active service set: $activeSet"
@@ -25,6 +37,7 @@ if ($activeSet) {
     }
     if ($Action -eq 'Stop') {
         $Set = $activeSet
+        $Engine = $activeEngine
     }
 }
 else {
@@ -114,10 +127,12 @@ if ($Action -eq 'Stop') { $composeArguments = $composeArguments + 'down' }
 $currentLocation = Get-Location
 try {
     Set-Location $rootDir
-    if ($Verbose) { Write-Host -ForegroundColor DarkGray "docker-compose $composeArguments" }
-    Start-Process -FilePath "docker" -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
+    if ($Verbose) { Write-Host -ForegroundColor DarkGray "compose $composeArguments" }
 
     if ($Action -eq 'Start') { Set-Content -Path $activeSetFile $Set }
+    Start-Process -FilePath $Engine -ArgumentList $composeArguments -WorkingDirectory $rootDir -NoNewWindow -Wait
+
+    if ($Action -eq 'Start') { Set-Content -Path $activeSetFile "${Engine}:${Set}" }
     if ($Action -eq 'Stop') { Set-Content -Path $activeSetFile '' }
 }
 finally {

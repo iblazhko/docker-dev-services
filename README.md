@@ -2,8 +2,8 @@
 
 ## Description
 
-This is a tool to run set of services during development using Docker Compose.
-Makes it easier to start / stop set of services on demand.
+This is a tool to run set of containerized services during development.
+It makes it easier to start / stop set of services on demand.
 
 Supported services:
 
@@ -20,12 +20,12 @@ Supported services:
 
 ## Prerequisites
 
-- Docker with Docker Compose CLI plugin: <https://docs.docker.com/install/>, <https://docs.docker.com/compose/install/compose-plugin/>
+- Docker with Docker Compose CLI plugin (<https://docs.docker.com/install/>, <https://docs.docker.com/compose/install/compose-plugin/>) or Podman with Podman Compose CLI plugin (<https://podman.io/docs/installation>, <https://github.com/containers/podman-compose>)
 - PowerShell Core: <https://github.com/powershell/powershell>
 
 ## Overview
 
-Set of services is started using Docker Compose.
+Set of services is started using Docker/Podman Compose.
 
 Each service in the set is defined in its own directory `services/<service-name>-<version>/service.yaml`.
 
@@ -39,10 +39,10 @@ Sets are defined in `service-set/set.yaml` files. There are two sets provided ou
 ## Usage
 
 - Clone or copy this repository locally, or download from [releases](https://github.com/iblazhko/docker-dev-services/releases/) page
-- Create a service set file `service-sets/<set>.local.yaml` (there is a rule in `.gitignore` to exclude `.local.yaml` files from source control) 
+- Create a service set file `service-sets/<set>.local.yaml` (there is a rule in `.gitignore` to exclude `.local.yaml` files from source control); use `_template_.yaml` as a template and do not forget to change set name to something meaningful
 - Review included services `service.yaml` definitions. If you need to change environment variables to a service, add file `.env/<service-name>-<version>.env`. Typically this would be used to change default credentials. See corresponding service `service.env` file for a reference.
 
-It is recommented to organize sets by products / use cases. E.g. if *Product1* us using ELK and MongoDB, and *Product2* uses ELK, Postgres, and Redis, you may have following sets:
+It is recommended to organize sets by products / use cases. E.g. if *Product1* us using ELK and MongoDB, and *Product2* uses ELK, Postgres, and Redis, you may have following sets:
 
 `product-sets/prod1.local.yaml`
 
@@ -73,6 +73,12 @@ Start service set by name:
 
 ```sh
 start.ps1 -Set <set-name>
+```
+
+By default, `docker` engine is used, if you need to use `podman` specify this using `-Engine` parameter:
+
+```sh
+start.ps1 -Set <set-name> -Engine podman
 ```
 
 ### Stop

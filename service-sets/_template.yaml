@@ -1,16 +1,14 @@
 set: template
 services:
-  - elasticsearch-8.3
-  - eventstore-5.0
-  - eventstore-21.10
+  - elasticsearch-8.12
+  - eventstore-23.10
   - influxdb-1.8
-  - kibana-8.3
-  - logstash-8.3
-  - mongo-4.2
-  - postgres-9.6
-  - postgres-14.4
-  - rabbitmq-3.9
+  - kibana-8.12
+  - logstash-8.12
+  - mongo-7.0
+  - postgres-16.2
+  - rabbitmq-3.12
   - redis-7.0
-  - seq-2022.1
+  - seq-2024.1
   - sqlserver-2022
-  - vault-1.5
+  - vault-1.13
